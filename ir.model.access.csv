@@ -1,0 +1,13 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_employee_CRM","guerrabi.employee","model_guerrabi_employee","group_CRM",1,1,1,1
+"access_nationality_CRM","guerrabi.nationality","model_guerrabi_nationality","group_CRM",1,1,1,1
+"access_specialization_CRM","guerrabi.specialization","model_guerrabi_specialization","group_CRM",1,1,1,1
+"access_employee_agence","guerrabi.employee","model_guerrabi_employee","group_agence",1,1,1,1
+"access_nationality_agence","guerrabi.nationality","model_guerrabi_nationality","group_agence",1,1,1,1
+"access_specialization_agence","guerrabi.specialization","model_guerrabi_specialization","group_agence",1,1,1,1
+"access_employee_directeur","guerrabi.employee","model_guerrabi_employee","group_directeur",1,1,1,1
+"access_nationality_directeur","guerrabi.nationality","model_guerrabi_nationality","group_directeur",1,1,1,1
+"access_specialization_directeur","guerrabi.specialization","model_guerrabi_specialization","group_directeur",1,1,1,1
+"access_employee_financier","guerrabi.employee","model_guerrabi_employee","group_financier",1,1,0,0
+"access_nationality_financier","guerrabi.nationality","model_guerrabi_nationality","group_financier",0,0,0,0
+"access_specialization_financier","guerrabi.specialization","model_guerrabi_specialization","group_financier",0,0,0,0

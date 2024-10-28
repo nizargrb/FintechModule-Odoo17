@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record id="group_CRM" model="res.groups">
+        <field name="name">CRM</field>
+    </record>
+
+    <record id="group_agence" model="res.groups">
+        <field name="name">agence</field>
+    </record>
+
+    <record id="group_directeur" model="res.groups">
+        <field name="name">directeur</field>
+    </record>
+
+    <record id="group_financier" model="res.groups">
+        <field name="name">financier</field>
+    </record>
+
+  </data>
+</openerp>

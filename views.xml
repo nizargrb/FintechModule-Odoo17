@@ -1,0 +1,282 @@
+<openerp>
+    <data>
+        <menuitem id="amoa_menu_root" name="GUERRABI" sequence="7"/>
+
+
+        <record id="action_employee" model="ir.actions.act_window">
+            <field name="name">Welcome Employees</field>
+            <field name="res_model">guerrabi.employee</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="Fintech.employee_form_view"/>
+            
+        </record>
+        
+
+
+
+        <menuitem id="menu_employee" name="Employees" action="action_employee" parent="amoa_menu_root" sequence="5"/>
+
+        <record id="action_employee_details" model="ir.actions.act_window">
+            <field name="name">Employee Details</field>
+            <field name="res_model">guerrabi.employee</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+        <menuitem id="menu_employee_details" name="Employee Details" action="action_employee_details" parent="menu_employee" sequence="1"/>
+
+        <record id="action_employee_add" model="ir.actions.act_window">
+            <field name="name">ADD CREDIT EMPLOYEE</field>
+            <field name="res_model">guerrabi.employee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_employee_add" name="ADD CREDIT EMPLOYEE" action="action_employee_add" parent="menu_employee" sequence="1"/>
+
+
+
+        <record id="action_nationality" model="ir.actions.act_window">
+            <field name="name">Nationalities</field>
+            <field name="res_model">guerrabi.nationality</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_nationality" name="Nationalities" action="action_nationality" parent="amoa_menu_root" sequence="3"/>
+
+        <record id="action_specialization" model="ir.actions.act_window">
+            <field name="name">Specializations</field>
+            <field name="res_model">guerrabi.specialization</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_specialization" name="Specializations" action="action_specialization" parent="amoa_menu_root" sequence="4"/>
+
+        
+
+
+         <record id="employee_tree" model="ir.ui.view">
+            <field name="name">Employees</field>
+            <field name="model">guerrabi.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employees">
+					<field name="cin"/>
+					<field name="name"/>
+					<field name="decision"/>
+					<field name="state"/>
+					<field name="credit"/>
+					<field name="mensualite"/>
+					<field name="duree"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        
+        <!-- Employees tree view -->
+        <record id="employee_add_tree" model="ir.ui.view">
+            <field name="name">AJOUTER EMPLOYEE</field>
+            <field name="model">guerrabi.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employees">
+					<field name="cin"/>
+					<field name="name"/>
+					<field name="decision"/>
+					<field name="state"/>
+					<field name="credit"/>
+					<field name="mensualite"/>
+					<field name="duree"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Nationalities tree view -->
+        <record id="nationality_tree" model="ir.ui.view">
+            <field name="name">Nationalities</field>
+            <field name="model">guerrabi.nationality</field>
+            <field name="arch" type="xml">
+                <tree string="Nationalities">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Specializations tree view -->
+        <record id="nationality_tree" model="ir.ui.view">
+            <field name="name">Specializations</field>
+            <field name="model">guerrabi.specialization</field>
+            <field name="arch" type="xml">
+                <tree string="Specializations">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Employee form view -->
+        <record id="employee_add_form" model="ir.ui.view">
+            <field name="name">ajouter ici </field>
+            <field name="model">guerrabi.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <header>
+					<button string="Dossier" type="object" name="dossier_button" invisible="state == 'dossier'" />
+                    <button string="CRM" type="object" name="crm_button"  invisible="state == 'crm'" groups="Fintech.group_CRM"/>
+                    <button string="Agence" type="object" name="agence_button"  invisible="state == 'agence'" groups="Fintech.group_agence"/>
+                    <button string="Directeur" type="object" name="directeur_button"  invisible="state == 'directeur'" groups="Fintech.group_directeur"/>
+                    <button string="Financement" type="object" name="financier_button"  invisible="state == 'financier'" groups="Fintech.group_financier"/>
+						<field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                      <label for="name"/>
+                      <field name="name"/>
+                      
+                        <group colspan="2" col="4">
+                          <group colspan="2" col="2">
+                              <separator string="Etude du dossier" colspan="2"/>
+                                <field name="cin"/>
+								<field name="credit"/>
+                                <field name="duree"/>
+                                <field name="mensualite"/>
+								<field name="decision"/>
+                          </group>
+                          <group colspan="2" col="2">
+                              <separator string="Données générales" colspan="2"/>
+                              <field name="revenu"/>
+							  <field name="date_demande"/>
+                          </group>
+
+                          <notebook colspan="4">
+                              <page string="TAUX D'INTERET">
+                                   <group>
+                                        <field name="taux_interet"/>
+                                        <field name="taux_interetmttc"/>
+                                       
+                                   </group>
+                              </page>
+                              <page string="TAUX TVA">
+                                   <field name="taux_tva"/>
+                              </page>
+                              <page string="Métier">
+                                  <field name="specializations"/>
+                              </page>
+                              <page string="Nationalité">
+                                  <field name="nationality"/>
+                              </page>
+                              
+
+                          </notebook>
+                      </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+
+        <!-- Nationality form view -->
+        <record id="nationality_form" model="ir.ui.view">
+            <field name="name">Nationality</field>
+            <field name="model">guerrabi.nationality</field>
+            <field name="arch" type="xml">
+                <form string="Nationality">
+                    <sheet>
+                      <group>
+                        <field name="name"/>
+                      </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Specialization form view -->
+        <record id="specialization_form" model="ir.ui.view">
+            <field name="name">Specialization</field>
+            <field name="model">guerrabi.specialization</field>
+            <field name="arch" type="xml">
+                <form string="Specialization">
+                    <sheet>
+                      <group>
+                        <field name="name"/>
+                      </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Employee Kanban View with Static Text -->
+        <record id="employee_form_view" model="ir.ui.view">
+            <field name="name">EMPLOYEE DETAILS</field>
+            <field name="model">guerrabi.employee</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-empty">
+                            <div class="oe_kanban_details">
+                                <div class="oe_kanban_content">
+                                    <div class="text-center">
+                                        <h2>Welcome to the Employee Management System</h2>
+                                        <p>Please use the menu on the left to navigate through the functionalities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <field name="name"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+
+
+
+
+
+                <!-- Dashboard Menu Item -->
+        <menuitem id="menu_dashboard" name="Dashboard" parent="amoa_menu_root" sequence="1"/>
+
+        <!-- Action for Dashboard -->
+        <record id="action_dashboard" model="ir.actions.act_window">
+            <field name="name">Employee Decisions</field>
+            <field name="res_model">guerrabi.employee</field>
+            <field name="view_mode">graph</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Attach Action to Menu Item -->
+        <menuitem id="menu_dashboard_action" name="Dashboard Employee Decisions" action="action_dashboard" parent="menu_dashboard" sequence="1"/>
+
+        <!-- Graph View -->
+        <record id="view_employee_decision_graph" model="ir.ui.view">
+            <field name="name">guerrabi.employee.decision.graph</field>
+            <field name="model">guerrabi.employee</field>
+            <field name="arch" type="xml">
+                <graph string="Employee Decisions" type="pie">
+                    <field name="decision" type="row"/>
+                    <field name="id"  type="measure" operator="count" />
+                </graph>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+    </data>
+</openerp>

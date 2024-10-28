@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Définition de l'action de rapport -->
+    <record id="action_report_credit" model="ir.actions.report">
+        <field name="name">Client Credit Report</field>
+        <field name="model">guerrabi.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Fintech.report_credit</field>
+        <field name="report_file">Fintech.report_credit</field>
+        <field name="binding_model_id" ref="model_guerrabi_employee"/>
+         <field name="binding_type">report</field>
+    </record>
+
+    <!-- Définition du modèle de rapport QWeb -->
+    <template id="report_credit">
+        <t t-call="web.external_layout">
+            <main>
+                <!-- Contenu du rapport -->
+                <h2>Client Credit Report</h2>
+                <t t-foreach="docs" t-as="doc">
+                    <p><strong>CIN:</strong> <t t-esc="doc.cin"/></p>
+                    <p><strong>NOM COMPLET:</strong> <t t-esc="doc.name.name"/></p> <!-- Notez l'utilisation de doc.name.name pour accéder au nom du partenaire -->
+                    <p><strong>État:</strong> <t t-esc="doc.state"/></p>
+                    <p><strong>Durée du crédit:</strong> <t t-esc="doc.duree"/> mois</p>
+                    <p><strong>Date de la demande:</strong> <t t-esc="doc.date_demande"/></p>
+                    <p><strong>Revenu mensuel:</strong> <t t-esc="doc.revenu"/></p>
+                    <p><strong>Crédit:</strong> <t t-esc="doc.credit"/></p>
+                    <p><strong>Taux d'intérêt annuel:</strong> <t t-esc="doc.taux_interet"/></p>
+                    <p><strong>Taux de TVA annuel:</strong> <t t-esc="doc.taux_tva"/></p>
+                    <p><strong>Taux d'intérêt mensuel TTC:</strong> <t t-esc="doc.taux_interetmttc"/></p>
+                    <p><strong>Mensualité:</strong> <t t-esc="doc.mensualite"/></p>
+                    <p><strong>Décision:</strong> <t t-esc="doc.decision"/></p>
+                </t>
+            </main>
+        </t>
+    </template>
+</odoo>
